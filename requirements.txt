@@ -1,0 +1,7 @@
+pillow
+numpy
+h5py>=2.5.0
+# planned:
+#   blosc-hdf5-plugin
+#   python-blosc
+#   openPMD-api
