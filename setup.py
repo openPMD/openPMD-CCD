@@ -22,11 +22,11 @@ with open('./openpmd_ccd/__version__.py') as f:
     exec( f.read() )
 
 # Define a custom class to run the tests with `python setup.py test`
-#class PyTest(TestCommand):
-#    def run_tests(self):
-#        import pytest
-#        errcode = pytest.main([])
-#        sys.exit(errcode)
+class PyTest(TestCommand):
+    def run_tests(self):
+        import pytest
+        errcode = pytest.main([])
+        sys.exit(errcode)
 
 # Main setup command
 setup(name = 'openPMD-CCD',
@@ -49,8 +49,8 @@ setup(name = 'openPMD-CCD',
       # zip_safe = True,
       python_requires = '>=3.5, <3.9',
       install_requires = install_requires,
-      #tests_require = ['pytest'],
-      #cmdclass = {'test': PyTest},
+      tests_require = ['pytest', 'pytest-datafiles'],
+      cmdclass = {'test': PyTest},
       platforms = 'any',
       classifiers = [
           'Programming Language :: Python',
