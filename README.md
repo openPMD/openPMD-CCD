@@ -8,8 +8,8 @@ License: TBD, likely BSD-3-Clause-LBNL
 ## Install
 
 ```bash
-# optional --user
-python3 -m pip install git+git://github.com/ax3l/openPMD-CCD-writer.git
+# optional:            --user
+python3 -m pip install        git+https://github.com/ax3l/openPMD-CCD.git
 ```
 
 
@@ -37,7 +37,7 @@ scan.close()
 
 ### LabView
 
-For LabView usage, create a ``openpmd_ccd.py`` file and populate it with:
+For LabView usage, create a ``openpmd_ccd.py`` [wrapper file](https://knowledge.ni.com/KnowledgeArticleDetails?id=kA00Z0000019UFmSAM&l=en-US) and populate it with:
 ```py
 from openpmd_ccd import CCD
 
@@ -65,8 +65,8 @@ def recalibrate(name, resolution=None, roi=None, exposure_time=None):
     scan[name].recalibrate(name, resolution, roi, exposure_time)
 
 
-def close(name, ...):
-    assert key in scan, "[openPMD-CCD] CCD name not known (open_write called?)."
+def close(name):
+    assert name in scan, "[openPMD-CCD] CCD name not known (open_write called?)."
     scan[name].close()
     del scan[name]
 ```
@@ -75,7 +75,7 @@ You have to **name your CCDs uniquely**.
 
 You can now call the ``open_write``, ``add``, ``recalibrate`` and ``close`` functions with their respective parameters.
 
-General overhead estimate when starting python scripts from LabView (measured on a regular windows PC in 2020):
+General latency estimate when [starting python scripts from LabView](https://zone.ni.com/reference/en-XX/help/371361R-01/glang/python_node/) (measured on a regular Windows PC in 2020):
 
 - Session startup: ~250ms
 - First function call into a module: ~1-2ms (simple `numpy` and `h5py` load)
