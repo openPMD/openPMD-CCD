@@ -44,8 +44,13 @@ def test_write(datafiles):
         for image_number in range(30, 40):
             scan.add(image_number, image_data=im_numpy)
 
-    # add by path
+    # add by list of list of uints (LabView)
+    im_list = [[1, 2, 3], [4, 5, 6]]
     for image_number in range(40, 50):
+        scan.add(image_number, image_data=im_list)
+
+    # add by path
+    for image_number in range(50, 60):
         scan.add(image_number, image_path)
     
     # scan.recalibrate(...)

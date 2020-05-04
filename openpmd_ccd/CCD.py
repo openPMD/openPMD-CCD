@@ -22,7 +22,7 @@ from .__version__ import __version__
 
 
 class CCD(object):
-    def __init__(self, file_path, overwrite=False,
+    def __init__(self, file_path, overwrite=False, create_directory=True,
                  name=None, model=None, serial=None, operator=None,
                  resolution=None, roi=None, exposure_time=None,
                  swmr=True
@@ -36,6 +36,8 @@ class CCD(object):
             The path to a series to be created created
         overwrite: bool, optional
             If set to True, this will silently overwrite existing files.
+        create_directory: bool, optional
+            If set to True, this will create missing directories in file_path.
 
         name: string, optional
             Camera name in a setup.
@@ -65,7 +67,7 @@ class CCD(object):
         # sanitize file path: spaces to _ and crop to 255 in file name
         input_filepath = Path(file_path)
         head_tail = os.path.split(input_filepath)
-        print(head_tail)
+        # FIXME handle create_directory
         head_tail_san = head_tail[1].replace(" ", "_")  # spaces to underscores
         head_tail_san = head_tail[1][:255]              # windows limit anyway
         file_path = os.path.join(head_tail[0], head_tail_san)
@@ -166,7 +168,7 @@ class CCD(object):
 
 
     # @profile
-    def add(self, image_number, image_path=None, image_data=None):
+    def add(self, image_number, image_data=None, image_path=None):
         """
         Add a new image.
 
@@ -174,17 +176,18 @@ class CCD(object):
         ----------
         image_number: integer
             Shot or image number in a data series.
-        image_path: path to an image
-            Provide this to pass an image from disk.
         image_data: image data as numpy.ndarray, PIL.image, io.BytesIO image,
                     or python list of list (LabView default to pass data)
-            ndarray or image
+            ndarray or image or list of lists
+        image_path: path to an image
+            Provide this to pass an image from disk. Decoding this iamge will
+            be slow.
         """
         assert self._mode == "write", (
             "[openPMD-CCD] Adding an image is only possible in write mode.")
         assert image_path is not None or image_data is not None, (
             "[openPMD-CCD] Either an image file or an image path is needed.")
-        # TODO: check if image_number exists??
+        # FIXME: check if image_number exists??
 
         im_numpy = None
         if image_path is not None:
