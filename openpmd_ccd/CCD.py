@@ -176,7 +176,8 @@ class CCD(object):
             Shot or image number in a data series.
         image_path: path to an image
             Provide this to pass an image from disk.
-        image_data: image data as numpy.ndarray, PIL.image, or io.BytesIO image
+        image_data: image data as numpy.ndarray, PIL.image, io.BytesIO image,
+                    or python list of list (LabView default to pass data)
             ndarray or image
         """
         assert self._mode == "write", (
@@ -193,6 +194,8 @@ class CCD(object):
                 im = image_data                  # negligible: already an PIL.Image
             elif issubclass(type(image_data), np.ndarray):
                 im_numpy = image_data            # negligible: already a numpy array
+            elif issubclass(type(image_data), list):
+                im_numpy = np.array(image_data)  # negligible: list of list to numpy array
             else:
                 im = Image.open(image_data)      # ~54ms/image: mem-bytes to PIL.Image
 
