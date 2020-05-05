@@ -31,7 +31,7 @@ def open_write(directory_path, ccd_name, scan_number=None, ccd_model=None,
     assert not ccd_name in scan, "[openPMD-CCD] You cannot define the same CCD name twice."
 
     if scan_number is not None:
-        file_name = "{0}_scan_{0}_ccd.h5".format(ccd_name, scan_number)
+        file_name = "{0}_scan-{0}_ccd.h5".format(ccd_name, scan_number)
     else:
         file_name = "{0}_ccd.h5".format(ccd_name)
     file_path = os.path.join(directory_path, file_name)
