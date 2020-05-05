@@ -48,6 +48,8 @@ General latency estimate when [starting python scripts from LabView](https://zon
 - Session startup: ~250ms
 - First function call into a module: ~1-2ms (simple `numpy` and `h5py` load)
 - Further function calls: ~0.3ms
+- passing a 2250 x 2250 pixel image matrix (16bit depth) to Python: ~300ms [(implicit list conversion)](https://twitter.com/axccl/status/1257537488148520962)
+- converting that list back to numpy: ~700ms
 
 The above values will change depending on Python installation and loaded modules.
 
