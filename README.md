@@ -37,7 +37,7 @@ scan.close()
 
 ### LabView
 
-For using this with LabView (2018 or newer), create a ``openpmd_ccd_labview.py`` [wrapper file](https://knowledge.ni.com/KnowledgeArticleDetails?id=kA00Z0000019UFmSAM&l=en-US) and [populate it with the following content (link)](openpmd_ccd_labview.py?raw=1).
+For using this with LabView (2020 or newer), create a ``openpmd_ccd_labview.py`` [wrapper file](https://knowledge.ni.com/KnowledgeArticleDetails?id=kA00Z0000019UFmSAM&l=en-US) and [populate it with the following content (link)](openpmd_ccd_labview.py?raw=1).
 
 You have to **name your CCDs uniquely**.
 
@@ -48,10 +48,22 @@ General latency estimate when [starting python scripts from LabView](https://zon
 - Session startup: ~250ms
 - First function call into a module: ~1-2ms (simple `numpy` and `h5py` load)
 - Further function calls: ~0.3ms
-- passing a 2250 x 2250 pixel image matrix (16bit depth) to Python: ~300ms [(implicit list conversion)](https://twitter.com/axccl/status/1257537488148520962)
-- converting that list back to numpy: ~700ms
 
-The above values will change depending on Python installation and loaded modules.
+There are three modes to pass an image, exemplified with a 2250x2250 pixel image matrix (16bit depth):
+- as numpy array (`image_data` as `numpy.ndarray`):
+  - passing to Python: ~20-23ms
+- as a list (`image_data` as `list`):
+  - passing to Python: ~300ms [(implicit list conversion)](https://twitter.com/axccl/status/1257537488148520962)
+  - converting list back to numpy: ~700ms
+- via a file path (`image_path` as `string`):
+  - overall: 100s of ms and more
+
+The write of the actual data to HDF5 (`add()` call) in the given example takes about 9.1ms per image.
+All above values will change depending on Python installation, loaded modules and computer hardware (mainly memory and CPU).
+
+Please see the [example.vi](labview/example.vi) file:
+
+[![LabView example](labview/preview.png)](labview/example.vi)
 
 
 ## Author Contributions
