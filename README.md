@@ -37,7 +37,7 @@ scan.close()
 
 ### LabView
 
-For using this with LabView (2020 or newer), create a ``openpmd_ccd_labview.py`` [wrapper file](https://knowledge.ni.com/KnowledgeArticleDetails?id=kA00Z0000019UFmSAM&l=en-US) and [populate it with the following content (link)](openpmd_ccd_labview.py?raw=1).
+For using this with LabView (2020 or newer), create a ``openpmd_ccd_labview.py`` [wrapper file](https://knowledge.ni.com/KnowledgeArticleDetails?id=kA00Z0000019UFmSAM&l=en-US) and [populate it with the following content (link)](labview/openpmd_ccd_labview.py?raw=1).
 
 You have to **name your CCDs uniquely**.
 
