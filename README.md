@@ -73,7 +73,5 @@ Please see the [example.vi](labview/example.vi) file:
 
 ### Transitive Contributions
 
-- [ADIOS](https://github.com/ornladios/ADIOS2) by [S. Klasky (ORNL), team, collaborators](https://csmd.ornl.gov/adios) and [contributors](https://github.com/ornladios/ADIOS2/graphs/contributors) (planned)
-- [Blosc](https://blosc.org) by [Francesc Alted](https://github.com/FrancescAlted) and [contributors](https://github.com/Blosc/c-blosc/graphs/contributors) (planned)
 - HDF5 by [the HDF group](https://www.hdfgroup.org/) and community
 - the [openPMD-standard](https://github.com/openPMD/openPMD-standard) by Axel Huebl (HZDR, now LBNL) and contributors
