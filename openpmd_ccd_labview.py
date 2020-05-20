@@ -5,7 +5,7 @@ import os
 
 
 # Start Configuration #########################################################
-config_allow_overwrite = False  # Overwrite scan data if filename exists?
+config_allow_overwrite = True   # Overwrite scan data if filename exists?
 config_create_directory = True  # Create directory if it does not exist yet?
 # End Configuration ###########################################################
 
@@ -46,6 +46,7 @@ def open_write(directory_path, ccd_name, scan_number=None, ccd_model=None,
         ccd_name, ccd_model, ccd_serial, ccd_operator,
         ccd_resolution, ccd_roi, ccd_exposure_time)
     # FIXME: try-catch and return status "cluster" (tuple)
+    # return (False, 42, "this is a warning")
 
 
 def add(ccd_name, image_number, image_data=None, image_path=None):
