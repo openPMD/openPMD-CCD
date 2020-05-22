@@ -1,6 +1,9 @@
 # openPMD-CCD
 
-A Small Python Module to Write CCD Images to openPMD.
+A python module for organizing CCD images with openPMD.
+
+openPMD is an open meta-data schema that provides meaning and self-description to data sets in science and engineering.
+See the [openPMD standard](https://github.com/openPMD/openPMD-standard) for details of this schema.
 
 License: TBD, likely BSD-3-Clause-LBNL
 
