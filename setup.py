@@ -3,7 +3,7 @@ This test file is part of the openPMD-CCD.
 
 Copyright 2020 openPMD contributors
 Authors: Axel Huebl
-License: 3-Clause-BSD-LBNL
+License: BSD-3-Clause-LBNL
 """
 import sys
 
@@ -45,7 +45,6 @@ setup(name = 'openPMD-CCD',
           'Source': 'https://github.com/ax3l/openPMD-CCD',
           'Tracker': 'https://github.com/ax3l/openPMD-CCD/issues',
       },
-      # license = 'BSD-3-Clause-LBNL',
       # zip_safe = True,
       python_requires = '>=3.5, <3.9',
       install_requires = install_requires,
@@ -67,9 +66,9 @@ setup(name = 'openPMD-CCD',
           'Programming Language :: Python :: 3.6',
           'Programming Language :: Python :: 3.7',
           'Programming Language :: Python :: 3.8',
-#          ('License :: OSI Approved :: '
-#           'Lawrence Berkeley National Labs BSD variant license '
-#           '(BSD-3-Clause-LBNL)'),
+          ('License :: OSI Approved :: '
+           'Lawrence Berkeley National Labs BSD variant license '
+           '(BSD-3-Clause-LBNL)'),
     ],
 )
 

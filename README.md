@@ -1,12 +1,16 @@
 # openPMD-CCD
 
-A python module for organizing CCD images with openPMD.
+[![Supported openPMD Standard](https://img.shields.io/badge/openPMD-1.0.0--1.1.0-blue)](https://github.com/openPMD/openPMD-standard/releases)
+[![Gitter chat](https://img.shields.io/gitter/room/openPMD/Lobby)](https://gitter.im/openPMD/Lobby)
+![Supported Platforms][api-platforms]
+[![License](https://img.shields.io/badge/license-BSD--3--Clause--LBNL-blue)](LICENSE.txt)  
+
+[api-platforms]: https://img.shields.io/badge/platforms-linux%20|%20osx%20|%20win-blue "Supported Platforms"
+
+This project is a python module for organizing CCD images with openPMD.
 
 openPMD is an open meta-data schema that provides meaning and self-description to data sets in science and engineering.
 See the [openPMD standard](https://github.com/openPMD/openPMD-standard) for details of this schema.
-
-License: TBD, likely BSD-3-Clause-LBNL
-
 
 ## Install
 
@@ -73,6 +77,21 @@ Please see the [example.vi](labview/example.vi) file:
 
 - [Axel Huebl (LBNL)](https://github.com/ax3l): implementation
 - [Anthony Gonsalves (LBNL)](https://atap.lbl.gov/division-leadership/atap-scientific-staff/): consulting and LabView integration
+
+
+## License Note
+
+Copyright (c) 2020, The Regents of the University of California, through Lawrence Berkeley National Laboratory (subject to receipt of any required approvals from the U.S. Dept. of Energy). All rights reserved.
+
+If you have questions about your rights to use or distribute this software, please contact Berkeley Lab's Intellectual Property Office at IPO@lbl.gov.
+
+This Software was developed under funding from the U.S. Department of Energy and the U.S. Government consequently retains certain rights.
+As such, the U.S. Government has been granted for itself and others acting on its behalf a paid-up, nonexclusive, irrevocable, worldwide license in the Software to reproduce, distribute copies to the public, prepare derivative works, and perform publicly and display publicly, and to permit others to do so.
+
+### TL;DR
+
+The license is a [BSD license](https://spdx.org/licenses/BSD-3-Clause-LBNL.html) with an added paragraph at the end that makes it easy for us to accept improvements without a hassle.
+
 
 ### Transitive Contributions
 
