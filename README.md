@@ -16,7 +16,7 @@ See the [openPMD standard](https://github.com/openPMD/openPMD-standard) for deta
 
 ```bash
 # optional:            --user
-python3 -m pip install        git+https://github.com/ax3l/openPMD-CCD.git
+python3 -m pip install        git+https://github.com/openPMD/openPMD-CCD.git
 ```
 
 
