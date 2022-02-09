@@ -34,7 +34,9 @@ scan = CCD("defaultCam_scan001.h5", overwrite=True,
            # resolution=None, roi=None, exposure_time=None
 )
 
+# just a test: read from a file
 scan.add(0, "tests/data/Scan005_SimCam_001.png")
+# this is faster and in-memory: data as a Python array
 scan.add(1, np.array([[1., 2.], [3., 4.]]))
 
 # scan.recalibrate(...)
