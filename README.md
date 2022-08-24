@@ -36,6 +36,8 @@ scan = CCD("defaultCam_scan001.h5", overwrite=True,
 
 # just a test: read from a file
 scan.add(0, "tests/data/Scan005_SimCam_001.png")
+# args: (image_number, image_data or image_path)
+
 # this is faster and in-memory: data as a Python array
 scan.add(1, np.array([[1., 2.], [3., 4.]]))
 
@@ -73,6 +75,32 @@ All above values will change depending on Python installation, loaded modules an
 Please see the [example.vi](labview/example.vi) file:
 
 [![LabView example](labview/preview.png)](labview/example.vi)
+
+
+
+## Usage (Read)
+
+You can use any [openPMD project for data processing](https://github.com/openPMD/openPMD-projects) with the created HDF5 files.
+
+For instance, [openPMD-viewer](https://github.com/openPMD/openPMD-viewer) can load the data like this:
+```python
+from openpmd_viewer import OpenPMDTimeSeries
+
+ts_2d = OpenPMDTimeSeries('./')  # path to defaultCam_scan001.h5
+
+# plot a single image in scan001
+Ex, info_Ex = ts.get_field( iteration=0, field='shots', coord='raw', plot=True )
+
+# use the Jupyter GUI
+ts_2d.slider()
+```
+
+The [openPMD-api](https://openpmd-api.readthedocs.io) project ships a little command-line tool called `openpmd-ls` to get a quick overview of a file as well:
+```console
+openpmd-ls defaultCam_scan001.h5
+```
+
+[As linked above, there are many more analysis options and programs that can read openPMD files](https://github.com/openPMD/openPMD-projects): visualization tools, Python APIs, C++ APIs, and more.
 
 
 ## Author Contributions
