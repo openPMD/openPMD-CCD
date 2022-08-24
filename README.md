@@ -27,6 +27,7 @@ python3 -m pip install        git+https://github.com/openPMD/openPMD-CCD.git
 Generally, you can use this as follows:
 ```py
 from openpmd_ccd import CCD
+import numpy as np
 
 scan = CCD("defaultCam_scan001.h5", overwrite=True,
            name="Go Pro", model="HERO8 Black", serial="12345678",
@@ -82,22 +83,22 @@ Please see the [example.vi](labview/example.vi) file:
 
 You can use any [openPMD project for data processing](https://github.com/openPMD/openPMD-projects) with the created HDF5 files.
 
-For instance, [openPMD-viewer](https://github.com/openPMD/openPMD-viewer) can load the data like this:
+The [openPMD-api](https://openpmd-api.readthedocs.io) project ships a full Python read interface and a little command-line tool called `openpmd-ls` to get a quick overview of a file:
+```console
+openpmd-ls defaultCam_scan001.h5
+```
+
+The Python project [openPMD-viewer](https://github.com/openPMD/openPMD-viewer) can load the data like this:
 ```python
 from openpmd_viewer import OpenPMDTimeSeries
 
-ts_2d = OpenPMDTimeSeries('./')  # path to defaultCam_scan001.h5
+ts = OpenPMDTimeSeries('./defaultCam_scan001.h5')
 
 # plot a single image in scan001
-Ex, info_Ex = ts.get_field( iteration=0, field='shots', coord='raw', plot=True )
+Ex, info_Ex = ts.get_field( iteration=0, field='raw', plot=True )
 
 # use the Jupyter GUI
-ts_2d.slider()
-```
-
-The [openPMD-api](https://openpmd-api.readthedocs.io) project ships a little command-line tool called `openpmd-ls` to get a quick overview of a file as well:
-```console
-openpmd-ls defaultCam_scan001.h5
+ts.slider()
 ```
 
 [As linked above, there are many more analysis options and programs that can read openPMD files](https://github.com/openPMD/openPMD-projects): visualization tools, Python APIs, C++ APIs, and more.
