@@ -25,7 +25,7 @@ class CCD(object):
     def __init__(self, file_path, overwrite=False, create_directory=True,
                  name=None, model=None, serial=None, operator=None,
                  resolution=None, roi=None, exposure_time=None,
-                 swmr=True
+                 swmr=None
                 ):
         """
         Open the CCD data series.
@@ -58,11 +58,11 @@ class CCD(object):
 
         swmr: boolean, optional
             Single-Writer-Multi-Reader (SWMR) support in HDF5.
-            Keep this enabled unless it does not work. This is a HDF5 1.10+
-            feature on POSIX platforms (Linux, macOS, Windows on Cygwin) that
-            makes sure that open files are always in a consistent, readable
-            state - even if an application crashes.
+            This is a HDF5 1.10+ feature on POSIX platforms (Linux, macOS,
+            Windows on Cygwin) that makes sure that open files are always in a
+            consistent, readable state - even if an application crashes.
             https://support.hdfgroup.org/HDF5/docNewFeatures/NewFeaturesSwmrDocs.html
+            This needs a new enough file sytem & hardware to work.
         """
         # sanitize file path: spaces to _ and crop to 255 in file name
         input_filepath = Path(file_path)
@@ -99,8 +99,9 @@ class CCD(object):
             exposure_time = "unknown"
         self._exposure_time = exposure_time
         self._f = h5.File(file_path, 'w')
-        # note: File(..., swmr=swmr) only affects read ('r') mode.
-        self._f.swmr_mode = swmr
+        if swmr is not None:
+            # note: File(..., swmr=swmr) only affects read ('r') mode.
+            self._f.swmr_mode = swmr
 
         def get_software_dependencies():
             """
