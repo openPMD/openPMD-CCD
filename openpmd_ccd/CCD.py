@@ -212,12 +212,12 @@ class CCD(object):
         # ~9.1ms/image
         compression = None
         compression_opts = None
-        im_h5 = self._f.create_dataset("data/{:06}/shots/raw".format(image_number),
+        im_h5 = self._f.create_dataset("data/{0}/shots/raw".format(image_number),
                                        data=im_numpy, compression=compression,
                                        compression_opts=compression_opts)
 
         # openPMD attributes (negligible time)
-        base_dir = self._f["data/{:06}".format(image_number)]
+        base_dir = self._f["data/{0}".format(image_number)]
         base_dir.attrs["time"] = datetime.datetime.utcnow().timestamp()
         base_dir.attrs["dt"] = 0.0   # unused
         base_dir.attrs["timeUnitSI"] = np.float64(1.0) # unused
