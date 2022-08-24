@@ -98,7 +98,9 @@ class CCD(object):
         if exposure_time is None:
             exposure_time = "unknown"
         self._exposure_time = exposure_time
-        self._f = h5.File(file_path, 'w', swmr=swmr)
+        self._f = h5.File(file_path, 'w')
+        # note: File(..., swmr=swmr) only affects read ('r') mode.
+        self._f.swmr_mode = swmr
 
         def get_software_dependencies():
             """
